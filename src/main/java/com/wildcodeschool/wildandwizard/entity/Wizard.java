@@ -1,12 +1,10 @@
 package com.wildcodeschool.wildandwizard.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Date;
 
 @Entity
+@Table(name="wizards")
 public class Wizard {
 
     @Id
@@ -20,6 +18,9 @@ public class Wizard {
     private boolean muggle;
 
     public Wizard() {
+    }
+
+    public Wizard(String firstName, String lastName, Date birthday, String birthPlace, String biography, boolean muggle) {
     }
 
     public Long getId() {

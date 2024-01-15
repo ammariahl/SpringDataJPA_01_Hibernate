@@ -1,5 +1,6 @@
 package com.wildcodeschool.wildandwizard.controller;
 
+import com.wildcodeschool.wildandwizard.entity.School;
 import com.wildcodeschool.wildandwizard.entity.Wizard;
 import com.wildcodeschool.wildandwizard.repository.WizardRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.annotation.PostConstruct;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+import java.util.Locale;
 import java.util.Optional;
 
 @Controller
@@ -56,4 +62,15 @@ public class WizardController {
 
         return "redirect:/wizards";
     }
+
+    @PostConstruct
+    private void testWizard() {
+        System.out.println("test wizard : ");
+        System.out.println(repository);
+
+        Wizard wizardA = new Wizard("Harry","Potter", null,"Godric's Hallow","Personnage principale d'une serie litteraire",false);
+
+        repository.saveAll(List.of(wizardA));
+    }
+
 }
